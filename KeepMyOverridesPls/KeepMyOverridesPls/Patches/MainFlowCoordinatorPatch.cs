@@ -10,7 +10,7 @@ namespace KeepMyOverridesPls.Patches
 
         [HarmonyPrefix]
         [HarmonyPatch("HandleMainMenuViewControllerPromoButtonWasPressed")]
-        private static void Prefix(ref PlayerDataModel ____playerDataModel, bool __state)
+        private static void HandleMainMenuViewControllerPromoButtonWasPressedPrefix(ref PlayerDataModel ____playerDataModel)
         {
             if (____playerDataModel)
             {
@@ -21,7 +21,7 @@ namespace KeepMyOverridesPls.Patches
 
         [HarmonyPostfix]
         [HarmonyPatch("HandleMainMenuViewControllerPromoButtonWasPressed")]
-        private static void Postfix(ref PlayerDataModel ____playerDataModel, bool __state)
+        private static void HandleMainMenuViewControllerPromoButtonWasPressedPostfix(ref PlayerDataModel ____playerDataModel)
         {
             if (____playerDataModel)
             {
