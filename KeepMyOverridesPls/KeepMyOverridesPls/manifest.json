@@ -3,7 +3,7 @@
   "id": "KeepMyOverridesPls",
   "name": "KeepMyOverridesPls",
   "author": "qqrz997",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stops the game from disabling your precious environment and colour scheme overrides.",
   "gameVersion": "1.35.0",
   "dependsOn": {

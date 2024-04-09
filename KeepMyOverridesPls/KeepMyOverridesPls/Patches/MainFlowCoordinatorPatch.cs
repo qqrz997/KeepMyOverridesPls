@@ -5,12 +5,12 @@ namespace KeepMyOverridesPls.Patches
     [HarmonyPatch(typeof(MainFlowCoordinator))]
     internal class MainFlowCoordinatorPatch
     {
-        private static bool? environmentOverride;
-        private static bool? colorOverride;
+        private static bool environmentOverride;
+        private static bool colorOverride;
 
         [HarmonyPrefix]
         [HarmonyPatch("HandleMainMenuViewControllerPromoButtonWasPressed")]
-        private static void HandleMainMenuViewControllerPromoButtonWasPressedPrefix(ref PlayerDataModel ____playerDataModel)
+        private static void HandleMainMenuViewControllerPromoButtonWasPressedPrefix(PlayerDataModel ____playerDataModel)
         {
             if (____playerDataModel)
             {
@@ -25,8 +25,8 @@ namespace KeepMyOverridesPls.Patches
         {
             if (____playerDataModel)
             {
-                ____playerDataModel.playerData.overrideEnvironmentSettings.overrideEnvironments = environmentOverride ?? false;
-                ____playerDataModel.playerData.colorSchemesSettings.overrideDefaultColors = colorOverride ?? false;
+                ____playerDataModel.playerData.overrideEnvironmentSettings.overrideEnvironments = environmentOverride;
+                ____playerDataModel.playerData.colorSchemesSettings.overrideDefaultColors = colorOverride;
             }
         }
     }

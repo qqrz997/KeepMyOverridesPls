@@ -3,6 +3,9 @@ using System;
 using System.Reflection;
 using IPALogger = IPA.Logging.Logger;
 using Harmony = HarmonyLib.Harmony;
+using Config = IPA.Config.Config;
+using KeepMyOverridesPls.Configuration;
+using IPA.Config.Stores;
 
 namespace KeepMyOverridesPls
 {
@@ -15,8 +18,9 @@ namespace KeepMyOverridesPls
         internal static IPALogger Log { get; private set; }
 
         [Init]
-        public Plugin(IPALogger logger)
+        public Plugin(IPALogger logger, Config config)
         {
+            PluginConfig pluginConfig = config.Generated<PluginConfig>();
             Log = logger;
         }
 
