@@ -5,18 +5,11 @@ using Zenject;
 namespace KeepMyOverridesPls
 {
     // override environment settings are not saved when the game reloads so they will be saved and loaded from the config
-    internal class PlayerDataModelHook : IInitializable, IAffinity
+    internal class PlayerDataModelHook(PluginConfig config, PlayerDataModel playerDataModel, EnvironmentsListModel environmentsListModel) : IInitializable, IAffinity
     {
-        private readonly PluginConfig config;
-        private readonly OverrideEnvironmentSettings overrideEnvironmentSettings;
-        private readonly EnvironmentsListModel environmentsListModel;
-
-        private PlayerDataModelHook(PluginConfig config, PlayerDataModel playerDataModel, EnvironmentsListModel environmentsListModel)
-        {
-            this.config = config;
-            this.environmentsListModel = environmentsListModel;
-            overrideEnvironmentSettings = playerDataModel.playerData.overrideEnvironmentSettings;
-        }
+        private readonly PluginConfig config = config;
+        private readonly OverrideEnvironmentSettings overrideEnvironmentSettings = playerDataModel.playerData.overrideEnvironmentSettings;
+        private readonly EnvironmentsListModel environmentsListModel = environmentsListModel;
 
         public void Initialize()
         {
