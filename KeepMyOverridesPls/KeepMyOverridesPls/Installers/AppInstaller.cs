@@ -16,6 +16,7 @@ namespace KeepMyOverridesPls.Installers
             // Patches
             Container.BindInterfacesTo<MainFlowCoordinatorPatch>().AsSingle();
             Container.BindInterfacesTo<OverrideEnvironmentSettingsPatch>().AsSingle();
+            Container.BindInterfacesTo<EnvironmentOverrideSettingsPanelControllerPatch>().AsSingle();
         }
     }
 }

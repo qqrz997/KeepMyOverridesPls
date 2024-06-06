@@ -13,6 +13,7 @@ namespace KeepMyOverridesPls
 
         public void Initialize()
         {
+            overrideEnvironmentSettings.overrideEnvironments = config.OverrideEnvironments;
             SetEnvInfoForType(EnvironmentType.Normal, config.NormalEnvironment);
             SetEnvInfoForType(EnvironmentType.Circle, config.CircleEnvironment);
         }

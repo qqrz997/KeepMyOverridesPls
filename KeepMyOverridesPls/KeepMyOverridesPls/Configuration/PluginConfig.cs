@@ -6,6 +6,8 @@ namespace KeepMyOverridesPls.Configuration
 {
     internal class PluginConfig
     {
+        public virtual bool OverrideEnvironments { get; set; } = false;
+
         public virtual string NormalEnvironment { get; set; } = "CrabRaveEnvironment";
 
         public virtual string CircleEnvironment { get; set; } = "GlassDesertEnvironment";

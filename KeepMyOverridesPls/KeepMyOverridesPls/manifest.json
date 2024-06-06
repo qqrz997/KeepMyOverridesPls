@@ -3,9 +3,9 @@
   "id": "KeepMyOverridesPls",
   "name": "KeepMyOverridesPls",
   "author": "qqrz997",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Stops the game from disabling your precious environment and colour scheme overrides.",
-  "gameVersion": "1.36.2",
+  "gameVersion": "1.37.0",
   "dependsOn": {
     "BSIPA": "^4.3.3",
     "SiraUtil": "^3.1.8"
