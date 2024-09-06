@@ -11,6 +11,7 @@ namespace KeepMyOverridesPls.Patches
         [AffinityPatch(typeof(MainFlowCoordinator), nameof(MainFlowCoordinator.HandleMainMenuViewControllerPromoButtonWasPressed))]
         private void HandleMainMenuViewControllerPromoButtonWasPressedPrefix(PlayerDataModel ____playerDataModel)
         {
+            // this gets called when the main menu advertisement is pressed
             overrideEnvironments = ____playerDataModel.playerData.overrideEnvironmentSettings.overrideEnvironments;
             overrideDefaultColors = ____playerDataModel.playerData.colorSchemesSettings.overrideDefaultColors;
         }
