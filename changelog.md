@@ -1,5 +1,9 @@
 ## Changelog
 
+### 1.1.2
+- Updated to Beat Saber 1.37.5
+- Fixed environment overrides getting reset when the cancel button in the main settings menu is chosen
+
 ### 1.1.1
 - Beat Games is having an identity crisis and once again no longer saves override environments, so this is now saved in the mod
 
