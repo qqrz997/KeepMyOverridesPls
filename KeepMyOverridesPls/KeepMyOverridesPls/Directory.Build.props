@@ -7,8 +7,8 @@
 		<PluginId>KeepMyOverridesPls</PluginId>
 		<PluginName>KeepMyOverridesPls</PluginName>
 		<Authors>qqrz997</Authors>
-		<Version>1.1.2</Version>
-		<GameVersion>1.37.4</GameVersion>
+		<Version>1.1.3</Version>
+		<GameVersion>1.40.6</GameVersion>
 		<Description>Stops the game from disabling your precious environment and colour scheme overrides.</Description>
 		<!--<PluginIcon></PluginIcon>-->
 		<!--<ProjectSource></ProjectSource>-->
