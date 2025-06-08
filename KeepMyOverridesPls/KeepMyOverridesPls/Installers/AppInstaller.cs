@@ -4,20 +4,25 @@ using Zenject;
 
 namespace KeepMyOverridesPls.Installers
 {
-    internal class AppInstaller(PluginConfig config) : Installer
+    internal class AppInstaller : Installer
     {
-        private readonly PluginConfig config = config;
+        private readonly PluginConfig config;
+
+        public AppInstaller(PluginConfig config)
+        {
+            this.config = config;
+        }
 
         public override void InstallBindings()
         {
             Container.BindInstance(config).AsSingle();
-            Container.BindInterfacesTo<PlayerDataModelHook>().AsSingle();
+            Container.BindInterfacesTo<Overrider>().AsSingle();
 
             // Patches
-            Container.BindInterfacesTo<MainFlowCoordinatorPatch>().AsSingle();
-            Container.BindInterfacesTo<OverrideEnvironmentSettingsPatch>().AsSingle();
-            Container.BindInterfacesTo<EnvironmentOverrideSettingsPanelControllerPatch>().AsSingle();
-            Container.BindInterfacesTo<PlayerDataFileModelPatch>().AsSingle();
+            Container.BindInterfacesTo<PromoButtonPatch>().AsSingle();
+            Container.BindInterfacesTo<EnvironmentSettingsHook>().AsSingle();
+            Container.BindInterfacesTo<EnvironmentOverrideHook>().AsSingle();
+            Container.BindInterfacesTo<DefaultOverrideSettingsPatch>().AsSingle();
         }
     }
 }

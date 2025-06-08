@@ -2,8 +2,12 @@
 
 namespace KeepMyOverridesPls.Patches
 {
-    internal class MainFlowCoordinatorPatch : IAffinity
+    internal class PromoButtonPatch : IAffinity
     {
+        // normally, the game will try to reset your override settings when pressing the promo button in the main menu.
+        // this is done in order to ensure you use any potential new environments and colors for new content.
+        // this patch makes sure the environments stay as they are.
+        
         private bool overrideEnvironments;
         private bool overrideDefaultColors;
 
@@ -11,7 +15,6 @@ namespace KeepMyOverridesPls.Patches
         [AffinityPatch(typeof(MainFlowCoordinator), nameof(MainFlowCoordinator.HandleMainMenuViewControllerPromoButtonWasPressed))]
         private void HandleMainMenuViewControllerPromoButtonWasPressedPrefix(PlayerDataModel ____playerDataModel)
         {
-            // this gets called when the main menu advertisement is pressed
             overrideEnvironments = ____playerDataModel.playerData.overrideEnvironmentSettings.overrideEnvironments;
             overrideDefaultColors = ____playerDataModel.playerData.colorSchemesSettings.overrideDefaultColors;
         }

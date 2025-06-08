@@ -3,10 +3,16 @@ using SiraUtil.Affinity;
 
 namespace KeepMyOverridesPls.Patches
 {
-    internal class PlayerDataFileModelPatch(PluginConfig config, EnvironmentsListModel environmentsListModel) : IAffinity
+    internal class DefaultOverrideSettingsPatch : IAffinity
     {
-        private readonly PluginConfig config = config;
-        private readonly EnvironmentsListModel environmentsListModel = environmentsListModel;
+        private readonly PluginConfig config;
+        private readonly EnvironmentsListModel environmentsListModel;
+
+        public DefaultOverrideSettingsPatch(PluginConfig config, EnvironmentsListModel environmentsListModel)
+        {
+            this.config = config;
+            this.environmentsListModel = environmentsListModel;
+        }
 
         [AffinityPrefix]
         [AffinityPatch(typeof(PlayerDataFileModel), nameof(PlayerDataFileModel.CreateDefaultOverrideEnvironmentSettings))]

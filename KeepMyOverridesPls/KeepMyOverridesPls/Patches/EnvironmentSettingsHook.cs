@@ -3,9 +3,14 @@ using SiraUtil.Affinity;
 
 namespace KeepMyOverridesPls.Patches
 {
-    internal class OverrideEnvironmentSettingsPatch(PluginConfig config) : IAffinity
+    internal class EnvironmentSettingsHook : IAffinity
     {
-        private readonly PluginConfig config = config;
+        private readonly PluginConfig config;
+
+        public EnvironmentSettingsHook(PluginConfig config)
+        {
+            this.config = config;
+        }
 
         [AffinityPostfix]
         [AffinityPatch(typeof(OverrideEnvironmentSettings), nameof(OverrideEnvironmentSettings.SetEnvironmentInfoForType))]
