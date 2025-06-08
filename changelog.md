@@ -1,5 +1,8 @@
 ## Changelog
 
+### 1.1.3
+- Fixed a warning message in the console
+
 ### 1.1.2
 - Updated to Beat Saber 1.37.5
 - Fixed environment overrides getting reset when the cancel button in the main settings menu is chosen
