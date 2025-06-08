@@ -1,30 +1,29 @@
 ﻿using KeepMyOverridesPls.Configuration;
 using SiraUtil.Affinity;
 
-namespace KeepMyOverridesPls.Patches
+namespace KeepMyOverridesPls.Patches;
+
+internal class EnvironmentSettingsHook : IAffinity
 {
-    internal class EnvironmentSettingsHook : IAffinity
+    private readonly PluginConfig config;
+
+    public EnvironmentSettingsHook(PluginConfig config)
     {
-        private readonly PluginConfig config;
+        this.config = config;
+    }
 
-        public EnvironmentSettingsHook(PluginConfig config)
+    [AffinityPostfix]
+    [AffinityPatch(typeof(OverrideEnvironmentSettings), nameof(OverrideEnvironmentSettings.SetEnvironmentInfoForType))]
+    private void SetEnvironmentInfoForTypePostFix(EnvironmentType environmentType, EnvironmentInfoSO environmentInfo)
+    {
+        // this gets called when the player selects an environment from the dropdown
+        switch (environmentType)
         {
-            this.config = config;
-        }
+            case EnvironmentType.Normal:
+                config.NormalEnvironment = environmentInfo.serializedName; break;
 
-        [AffinityPostfix]
-        [AffinityPatch(typeof(OverrideEnvironmentSettings), nameof(OverrideEnvironmentSettings.SetEnvironmentInfoForType))]
-        private void SetEnvironmentInfoForTypePostFix(EnvironmentType environmentType, EnvironmentInfoSO environmentInfo)
-        {
-            // this gets called when the player selects an environment from the dropdown
-            switch (environmentType)
-            {
-                case EnvironmentType.Normal:
-                    config.NormalEnvironment = environmentInfo.serializedName; break;
-
-                case EnvironmentType.Circle:
-                    config.CircleEnvironment = environmentInfo.serializedName; break;
-            }
+            case EnvironmentType.Circle:
+                config.CircleEnvironment = environmentInfo.serializedName; break;
         }
     }
 }

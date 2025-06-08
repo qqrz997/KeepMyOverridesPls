@@ -1,22 +1,21 @@
 ﻿using KeepMyOverridesPls.Configuration;
 using SiraUtil.Affinity;
 
-namespace KeepMyOverridesPls.Patches
+namespace KeepMyOverridesPls.Patches;
+
+internal class EnvironmentOverrideHook : IAffinity
 {
-    internal class EnvironmentOverrideHook : IAffinity
+    private readonly PluginConfig config;
+
+    public EnvironmentOverrideHook(PluginConfig config)
     {
-        private readonly PluginConfig config;
+        this.config = config;
+    }
 
-        public EnvironmentOverrideHook(PluginConfig config)
-        {
-            this.config = config;
-        }
-
-        [AffinityPostfix]
-        [AffinityPatch(typeof(EnvironmentOverrideSettingsPanelController), nameof(EnvironmentOverrideSettingsPanelController.HandleOverrideEnvironmentsToggleValueChanged))]
-        private void HandleOverrideEnvironmentsToggleValueChangedPostFix(bool isOn)
-        {
-            config.OverrideEnvironments = isOn;
-        }
+    [AffinityPostfix]
+    [AffinityPatch(typeof(EnvironmentOverrideSettingsPanelController), nameof(EnvironmentOverrideSettingsPanelController.HandleOverrideEnvironmentsToggleValueChanged))]
+    private void HandleOverrideEnvironmentsToggleValueChangedPostFix(bool isOn)
+    {
+        config.OverrideEnvironments = isOn;
     }
 }
